@@ -931,3 +931,42 @@ html[data-theme="dark"] .mega-menu a:hover {
   flex: 1;
   min-width: 0;
 }
+
+/* ===========================
+   검색창 다크모드
+=========================== */
+
+html[data-theme="dark"] .search-result {
+  background: #3a3d42;
+  border: 1px solid #555;
+}
+
+html[data-theme="dark"] .result-item {
+  color: white;
+}
+
+html[data-theme="dark"] .result-item:hover {
+  background: #4a4d52;
+}
+/* ===========================
+   TMI 다크모드
+=========================== */
+
+html[data-theme="dark"] .tmi-container {
+  background: #3a3d42;
+  border-left: 4px solid white;
+}
+
+html[data-theme="dark"] .tmi-list li {
+  color: white;
+}
+
+html[data-theme="dark"] .tmi-tag {
+  background: #4a4d52;
+  color: white;
+}
+
+html[data-theme="dark"] .profile-tmi-section h2 {
+  color: white;
+  border-bottom: 2px solid white;
+}
