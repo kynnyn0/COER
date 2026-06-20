@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <title>MARTIN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <style>
+    /* 1. 로고를 감싸는 상자 크기 조절 (10px은 너무 작으니 40px 정도로 키웁니다) */
+    .logo {
+      height: 100px; /* 💡 원하는 로고 높이로 숫자를 조절해 보세요 */
+      display: flex;
+      align-items: center;
+    }
+
+    /* 2. 로고 안에 있는 링크 태그 스타일 */
+    .logo a {
+      display: inline-block;
+      height: 100%; /* 부모 상자 높이를 그대로 따라감 */
+    }
+
+    /* 💥 3. 핵심: 이미지 태그가 부모 상자 크기를 벗어나지 못하도록 락을 겁니다 */
+    .logo img {
+      height: 100%; /* 부모 높이에 맞게 이미지 축소/확대 */
+      width: auto; /* 가로 비율은 깨지지 않게 알아서 맞춤 */
+      object-fit: contain; /* 이미지가 찌그러지지 않고 예쁘게 들어가도록 방지 */
+    }
+    /* 두 버튼을 감싸는 상자를 오른쪽 끝으로 밀고, 버튼 사이 간격을 좁힙니다 */
+    .auth-group {
+      margin-left: auto; /* 💡 왼쪽 여백을 최대로 밀어서 오른쪽 끝으로 이동시킴 */
+      display: flex;
+      gap: 10px; /* 💡 두 버튼 사이의 간격을 10px로 가깝게 설정 */
+      align-items: center;
+    }
+
+    .gallery-container {
+      max-width: 1400px;
+      margin: 150px auto 80px auto !important;
+      padding: 0 40px;
+    }
+
+    .gallery-title {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2d3748;
+    }
+
+    /* 🔘 1. 동그란 라디오 버튼 자체는 화면에서 보이지 않게 숨깁니다 */
+    input[type="radio"] {
+      display: none;
+    }
+
+    /* 🏷️ 2. 버튼처럼 꾸민 라벨(Label) 디자인 */
+    .filter-tags {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tag-label {
+      background-color: #f7fafc;
+      color: #4a5568;
+      border: 1px solid #e2e8f0;
+      padding: 8px 22px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .tag-label:hover {
+      background-color: #e2e8f0;
+    }
+
+    /* 🎯 3. [핵심 치트키] 라디오 버튼이 체크되면 연결된 라벨을 활성화 색상으로 변경 */
+    #btn-all:checked ~ .filter-tags [for="btn-all"],
+    #btn-martin:checked ~ .filter-tags [for="btn-martin"],
+    #btn-james:checked ~ .filter-tags [for="btn-james"],
+    #btn-juhoon:checked ~ .filter-tags [for="btn-juhoon"],
+    #btn-seonghyeon:checked ~ .filter-tags [for="btn-seonghyeon"],
+    #btn-keonho:checked ~ .filter-tags [for="btn-keonho"] {
+      background-color: #2d3748 !important;
+      color: white !important;
+      border-color: #2d3748 !important;
+    }
+
+    /* 📸 4. 사진 Grid 레이아웃 */
+    .image-grid {
+      display: grid !important;
+      grid-template-columns: repeat(5, 1fr) !important;
+      gap: 15px !important;
+    }
+
+    .image-item {
+      position: relative !important; /* 💥 하트 버튼의 기준점이 되도록 설정 */
+      border-radius: 8px !important;
+      overflow: hidden !important;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .image-item img {
+      width: 100% !important;
+      height: 220px !important;
+      object-fit: cover !important;
+      display: block;
+    }
+
+    .image-item:hover {
+      transform: translateY(-3px);
+    }
+
+    /* 💥 5. [필터링 시스템] 마틴을 누르면 마틴 클래스가 아닌 사진들을 전부 display: none 시켜버림 */
+    #btn-martin:checked ~ .image-grid .image-item:not(.martin),
+    #btn-james:checked ~ .image-grid .image-item:not(.james),
+    #btn-juhoon:checked ~ .image-grid .image-item:not(.juhoon),
+    #btn-seonghyeon:checked ~ .image-grid .image-item:not(.seonghyeon),
+    #btn-keonho:checked ~ .image-grid .image-item:not(.keonho) {
+      display: none !important;
+    }
+
+    /* ==========================================================================
+   📱 반응형 화면 조절
+   ========================================================================== */
+    @media (max-width: 1024px) {
+      .image-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .image-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+  </style>
+  <body>
+    <header class="top-white-banner">
+      <div class="logo">
+        <a href="main.html">
+          <img src="images/logo.png" alt="로고" />
+        </a>
+      </div>
+
+      <nav class="banner-center-text">
+        <div class="banner-buttons">
+          <div class="dropdown">
+            <button class="banner-btn dropdown-toggle">Members</button>
+
+            <div class="mega-menu">
+              <div class="mega-menu-inner">
+                <a href="member1.html">MARTIN</a>
+                <a href="member2.html">JAMES</a>
+                <a href="member3.html">JUHOON</a>
+                <a href="member4.html">SEONGHYEON</a>
+                <a href="member5.html">KEONHO</a>
+              </div>
+            </div>
+          </div>
+          <button class="banner-btn">Pictures</button>
+
+          <div class="banner-search-box">
+            <input
+              type="text"
+              class="banner-search-input"
+              id="searchInput"
+              placeholder="research..."
+            />
+
+            <div class="search-result" id="searchResult"></div>
+          </div>
+        </div>
+        <div class="auth-group">
+          <button class="banner-btn btn-right">Login</button>
+          <button class="banner-btn btn-right">My page</button>
+        </div>
+      </nav>
+    </header>
+    <main class="gallery-container">
+      <h1 class="gallery-title">Pictures</h1>
+
+      <input type="radio" id="btn-all" name="member-filter" checked />
+      <input type="radio" id="btn-martin" name="member-filter" />
+      <input type="radio" id="btn-james" name="member-filter" />
+      <input type="radio" id="btn-juhoon" name="member-filter" />
+      <input type="radio" id="btn-seonghyeon" name="member-filter" />
+      <input type="radio" id="btn-keonho" name="member-filter" />
+
+      <div class="filter-tags">
+        <label for="btn-all" class="tag-label">전체</label>
+        <label for="btn-martin" class="tag-label">마틴</label>
+        <label for="btn-james" class="tag-label">제임스</label>
+        <label for="btn-juhoon" class="tag-label">주훈</label>
+        <label for="btn-seonghyeon" class="tag-label">성현</label>
+        <label for="btn-keonho" class="tag-label">건호</label>
+      </div>
+
+      <div class="image-grid">
+        <div class="image-item martin">
+          <img src="martin/p-martin1.png" alt="마틴 1" />
+        </div>
+        <div class="image-item martin">
+          <img src="martin/p-martin2.png" alt="마틴 2" />
+        </div>
+        <div class="image-item martin">
+          <img src="martin/p-martin3.png" alt="마틴 3" />
+        </div>
+        <div class="image-item martin">
+          <img src="martin/p-martin4.png" alt="마틴 4" />
+        </div>
+        <div class="image-item martin">
+          <img src="martin/p-martin5.png" alt="마틴 5" />
+        </div>
+
+        <div class="image-item james">
+          <img src="james/p-james1.png" alt="제임스 1" />
+        </div>
+        <div class="image-item james">
+          <img src="james/p-james2.png" alt="제임스 2" />
+        </div>
+        <div class="image-item james">
+          <img src="james/p-james3.png" alt="제임스 3" />
+        </div>
+        <div class="image-item james">
+          <img src="james/p-james4.png" alt="제임스 4" />
+        </div>
+        <div class="image-item james">
+          <img src="james/p-james5.png" alt="제임스 5" />
+        </div>
+
+        <div class="image-item juhoon">
+          <img src="juhoon/p-juhoon1.png" alt="주훈 1" />
+        </div>
+        <div class="image-item juhoon">
+          <img src="juhoon/p-juhoon2.png" alt="주훈 2" />
+        </div>
+        <div class="image-item juhoon">
+          <img src="juhoon/p-juhoon3.png" alt="주훈 3" />
+        </div>
+        <div class="image-item juhoon">
+          <img src="juhoon/p-juhoon4.png" alt="주훈 4" />
+        </div>
+        <div class="image-item juhoon">
+          <img src="juhoon/p-juhoon5.png" alt="주훈 5" />
+        </div>
+
+        <div class="image-item seonghyeon">
+          <img src="seonghyeon/p-seonghyeon1.png" alt="성현 1" />
+        </div>
+        <div class="image-item seonghyeon">
+          <img src="seonghyeon/p-seonghyeon2.png" alt="성현 2" />
+        </div>
+        <div class="image-item seonghyeon">
+          <img src="seonghyeon/p-seonghyeon3.png" alt="성현 3" />
+        </div>
+        <div class="image-item seonghyeon">
+          <img src="seonghyeon/p-seonghyeon4.png" alt="성현 4" />
+        </div>
+        <div class="image-item seonghyeon">
+          <img src="seonghyeon/p-seonghyeon5.png" alt="성현 5" />
+        </div>
+
+        <div class="image-item keonho">
+          <img src="keonho/p-keonho1.png" alt="건호 1" />
+        </div>
+        <div class="image-item keonho">
+          <img src="keonho/p-keonho2.png" alt="건호 2" />
+        </div>
+        <div class="image-item keonho">
+          <img src="keonho/p-keonho3.png" alt="건호 3" />
+        </div>
+        <div class="image-item keonho">
+          <img src="keonho/p-keonho4.png" alt="건호 4" />
+        </div>
+        <div class="image-item keonho">
+          <img src="keonho/p-keonho5.png" alt="건호 5" />
+        </div>
+
+        <div class="image-item group">
+          <img src="group/p-group1.png" alt="단체 1" />
+        </div>
+        <div class="image-item group">
+          <img src="group/p-group2.png" alt="단체 2" />
+        </div>
+        <div class="image-item group">
+          <img src="group/p-group3.png" alt="단체 3" />
+        </div>
+        <div class="image-item group">
+          <img src="group/p-group4.png" alt="단체 4" />
+        </div>
+        <div class="image-item group">
+          <img src="group/p-group5.png" alt="단체 5" />
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+  <footer>
+    <!-- 위쪽 -->
+    <div class="footer-content">
+      <img
+        src="images/CORTIS.png"
+        alt="CORTIS footer logo"
+        class="footer-logo"
+      />
+
+      <div class="footer-info">
+        <b class="contact-title">CONTACT US</b>
+
+        <p class="contact">
+          공지사항<br />
+          LOCATION <br />
+          CONTACT<br />
+          비즈니스 문의 <br />
+          비윤리행위 신고<br />
+          하도급거래 <br />
+          가이드라인 <br />
+          영상정보처리기기 <br />
+          운영방침
+        </p>
+      </div>
+    </div>
+
+    <!-- 아래 중앙 -->
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a
+          href="https://www.instagram.com/cortis?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/instagram.png" class="social-icon" />
+        </a>
+
+        <a href="https://www.youtube.com/@cortis_bighit" target="_blank">
+          <img src="images/youtube.png" class="social-icon" />
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@cortis_bighit?is_from_webapp=1&sender_device=pc"
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/tictok.png" class="social-icon" />
+        </a>
+      </div>
+
+      <p class="footer-text">
+        <b>CORTIS | BIGHIT MUSIC</b>
+      </p>
+    </div>
+  </footer>
+</html>

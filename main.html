@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>COER</title>
+    <link href="style.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="top-white-banner">
+      <img src="images/logo.png" alt="CORTIS Logo" class="logo" />
+
+      <nav class="banner-center-text">
+        <div class="banner-buttons">
+          <div class="dropdown">
+            <button class="banner-btn dropdown-toggle">Members</button>
+
+            <div class="mega-menu">
+              <div class="mega-menu-inner">
+                <a href="member1.html">MARTIN</a>
+                <a href="member2.html">JAMES</a>
+                <a href="member3.html">JUHOON</a>
+                <a href="member4.html">SEONGHYEON</a>
+                <a href="member5.html">KEONHO</a>
+              </div>
+            </div>
+          </div>
+          <a href="pictures.html" style="text-decoration: none; color: inherit">
+            <button class="banner-btn">Pictures</button>
+          </a>
+
+          <div class="banner-search-box">
+            <input
+              type="text"
+              class="banner-search-input"
+              id="searchInput"
+              placeholder="research..."
+            />
+
+            <div class="search-result" id="searchResult"></div>
+          </div>
+        </div>
+        <div class="auth-group">
+          <button class="banner-btn btn-right">Login</button>
+          <a href="mypage.html" style="text-decoration: none; color: inherit">
+            <button class="banner-btn btn-right">My page</button>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero"></div>
+      <section id="site-intro">
+        <h1>Introduce CORTIS</h1>
+        <h4 class="introduce">
+          데뷔일 : 2025.8.18<br />
+          LEADER : Martin<br />
+          소속사 : BIGHIT MUSIC<br />
+          LABELS : HYBE LABELS<br />
+        </h4>
+      </section>
+      <section class="profile-youtube-section">
+        <h2>FEATURED VIDEOS</h2>
+        <div class="youtube-grid">
+          <a
+            href="https://youtu.be/T-76o4XpGh8?si=i14-I_6xedCgxsOD"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="images/cortis1.png" alt="Video 1" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+
+          <a
+            href="https://youtu.be/PTnAggHB4dU?si=jb8vulJppsnPm1Xa"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="images/cortis2.png" alt="Video 2" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+
+          <a
+            href="https://youtu.be/ieEwm_o18Ls?si=NSm6O4ZH2GnEiZHt"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="images/cortis3.png" alt="Video 3" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+  <footer>
+    <!-- 위쪽 -->
+    <div class="footer-content">
+      <img
+        src="images/CORTIS.png"
+        alt="CORTIS footer logo"
+        class="footer-logo"
+      />
+
+      <div class="footer-info">
+        <b class="contact-title">CONTACT US</b>
+
+        <p class="contact">
+          공지사항<br />
+          LOCATION <br />
+          CONTACT<br />
+          비즈니스 문의 <br />
+          비윤리행위 신고<br />
+          하도급거래 <br />
+          가이드라인 <br />
+          영상정보처리기기 <br />
+          운영방침
+        </p>
+      </div>
+    </div>
+
+    <!-- 아래 중앙 -->
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a
+          href="https://www.instagram.com/cortis?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/instagram.png" class="social-icon" />
+        </a>
+
+        <a href="https://www.youtube.com/@cortis_bighit" target="_blank">
+          <img src="images/youtube.png" class="social-icon" />
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@cortis_bighit?is_from_webapp=1&sender_device=pc"
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/tictok.png" class="social-icon" />
+        </a>
+      </div>
+
+      <p class="footer-text">
+        <b>CORTIS | BIGHIT MUSIC</b>
+      </p>
+    </div>
+  </footer>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>COER</title>
+    <link href="style.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="top-white-banner">
+      <div class="logo">
+        <a href="main.html">
+          <img src="images/logo.png" alt="로고" />
+        </a>
+      </div>
+
+      <nav class="banner-center-text">
+        <div class="banner-buttons">
+          <div class="dropdown">
+            <button class="banner-btn dropdown-toggle">Members</button>
+
+            <div class="mega-menu">
+              <div class="mega-menu-inner">
+                <a href="member1.html">MARTIN</a>
+                <a href="member2.html">JAMES</a>
+                <a href="member3.html">JUHOON</a>
+                <a href="member4.html">SEONGHYEON</a>
+                <a href="member5.html">KEONHO</a>
+              </div>
+            </div>
+          </div>
+          <a href="pictures.html" style="text-decoration: none; color: inherit">
+            <button class="banner-btn">Pictures</button>
+          </a>
+
+          <div class="banner-search-box">
+            <input
+              type="text"
+              class="banner-search-input"
+              id="searchInput"
+              placeholder="research..."
+            />
+
+            <div class="search-result" id="searchResult"></div>
+          </div>
+        </div>
+        <div class="auth-group">
+          <button class="banner-btn btn-right">Login</button>
+          <a href="mypage.html" style="text-decoration: none; color: inherit">
+            <button class="banner-btn btn-right">My page</button>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <!-- ⭐ 여기 핵심: 닉네임 크게 표시 -->
+    <div class="welcome-wrap">
+      <div class="welcome-title" id="welcomeText">WELCOME</div>
+      <div class="welcome-sub">your personal CORTIS space</div>
+    </div>
+
+    <!-- 설정 -->
+    <div class="control-box">
+      <div class="row">
+        <input id="nicknameInput" placeholder="닉네임 입력" />
+        <button onclick="saveNickname()">저장</button>
+      </div>
+
+      <button id="darkModeBtn" class="dark-btn" onclick="toggleTheme()">
+        🌙 Dark Mode
+      </button>
+    </div>
+
+    <!-- 최애 -->
+    <div class="fav-grid">
+      <div
+        class="fav-card"
+        data-name="MARTIN"
+        onclick="selectFav('MARTIN', this)"
+      >
+        <img src="f-picture/martin.png" />
+      </div>
+
+      <div
+        class="fav-card"
+        data-name="JAMES"
+        onclick="selectFav('JAMES', this)"
+      >
+        <img src="f-picture/james.png" />
+      </div>
+
+      <div
+        class="fav-card"
+        data-name="JUHOON"
+        onclick="selectFav('JUHOON', this)"
+      >
+        <img src="f-picture/juhoon.png" />
+      </div>
+
+      <div
+        class="fav-card"
+        data-name="SEONGHYEON"
+        onclick="selectFav('SEONGHYEON', this)"
+      >
+        <img src="f-picture/seonghyeon.png" />
+      </div>
+
+      <div
+        class="fav-card"
+        data-name="KEONHO"
+        onclick="selectFav('KEONHO', this)"
+      >
+        <img src="f-picture/keonho.png" />
+      </div>
+    </div>
+
+    <!-- ================= SCRIPT ================= -->
+    <script>
+      function saveNickname() {
+        const name = document.getElementById("nicknameInput").value;
+
+        localStorage.setItem("nickname", name);
+
+        // ⭐ 여기 핵심: 상단 크게 표시
+        document.getElementById("welcomeText").textContent = "WELCOME, " + name;
+      }
+
+      function toggleTheme() {
+        const cur = localStorage.getItem("theme") || "light";
+
+        const next = cur === "dark" ? "light" : "dark";
+
+        localStorage.setItem("theme", next);
+
+        document.documentElement.dataset.theme = next;
+
+        const btn = document.getElementById("darkModeBtn");
+
+        btn.textContent = next === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+      }
+
+      function selectFav(name, el) {
+        localStorage.setItem("favorite", name);
+
+        document
+          .querySelectorAll(".fav-card")
+          .forEach((c) => c.classList.remove("active"));
+
+        el.classList.add("active");
+      }
+
+      window.onload = () => {
+        const name = localStorage.getItem("nickname");
+        const fav = localStorage.getItem("favorite");
+        const theme = localStorage.getItem("theme");
+
+        if (name) {
+          document.getElementById("welcomeText").textContent =
+            "WELCOME, " + name;
+
+          document.getElementById("nicknameInput").value = name;
+        }
+
+        if (fav) {
+          document.querySelectorAll(".fav-card").forEach((card) => {
+            if (card.dataset.name === fav) {
+              card.classList.add("active");
+            }
+          });
+        }
+
+        const btn = document.getElementById("darkModeBtn");
+
+        if (theme) {
+          document.documentElement.dataset.theme = theme;
+
+          btn.textContent = theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+        }
+      };
+    </script>
+    <script src="script.js"></script>
+  </body>
+  <footer>
+    <!-- 위쪽 -->
+    <div class="footer-content">
+      <img
+        src="images/CORTIS.png"
+        alt="CORTIS footer logo"
+        class="footer-logo"
+      />
+
+      <div class="footer-info">
+        <b class="contact-title">CONTACT US</b>
+
+        <p class="contact">
+          공지사항<br />
+          LOCATION <br />
+          CONTACT<br />
+          비즈니스 문의 <br />
+          비윤리행위 신고<br />
+          하도급거래 <br />
+          가이드라인 <br />
+          영상정보처리기기 <br />
+          운영방침
+        </p>
+      </div>
+    </div>
+
+    <!-- 아래 중앙 -->
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a
+          href="https://www.instagram.com/cortis?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/instagram.png" class="social-icon" />
+        </a>
+
+        <a href="https://www.youtube.com/@cortis_bighit" target="_blank">
+          <img src="images/youtube.png" class="social-icon" />
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@cortis_bighit?is_from_webapp=1&sender_device=pc"
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/tictok.png" class="social-icon" />
+        </a>
+      </div>
+
+      <p class="footer-text">
+        <b>CORTIS | BIGHIT MUSIC</b>
+      </p>
+    </div>
+  </footer>
+</html>

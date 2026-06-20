@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <title>MARTIN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <style>
+    /* 1. 로고를 감싸는 상자 크기 조절 (10px은 너무 작으니 40px 정도로 키웁니다) */
+    .logo {
+      height: 100px; /* 💡 원하는 로고 높이로 숫자를 조절해 보세요 */
+      display: flex;
+      align-items: center;
+    }
+
+    /* 2. 로고 안에 있는 링크 태그 스타일 */
+    .logo a {
+      display: inline-block;
+      height: 100%; /* 부모 상자 높이를 그대로 따라감 */
+    }
+
+    /* 💥 3. 핵심: 이미지 태그가 부모 상자 크기를 벗어나지 못하도록 락을 겁니다 */
+    .logo img {
+      height: 100%; /* 부모 높이에 맞게 이미지 축소/확대 */
+      width: auto; /* 가로 비율은 깨지지 않게 알아서 맞춤 */
+      object-fit: contain; /* 이미지가 찌그러지지 않고 예쁘게 들어가도록 방지 */
+    }
+    /* ==========================================================================
+   📸 좌측 사진 + 📝 우측 글씨 가로 배치 레이아웃 (수정본)
+   ========================================================================== */
+
+    /* 본문 전체를 감싸는 상자 */
+    .profile-container {
+      max-width: 1000px;
+      margin: 150px auto 80px auto !important; /* 상단 배너 아래로 충분히 내림 */
+      padding: 0 40px;
+
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 60px;
+
+      /* 💥 핵심 수정: 아래에 추가될 유튜브 섹션이 다음 줄로 자연스럽게 떨어지도록 설정 */
+      flex-wrap: wrap !important;
+    }
+
+    /* 📸 왼쪽 사진 상자 */
+    .profile-image-box {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 📝 오른쪽 글씨 상자 */
+    .profile-text-box {
+      flex: 1.2;
+      font-family: "Montserrat", "Open Sans", sans-serif;
+      color: #2d3748;
+    }
+
+    /* 글씨 상세 디자인 */
+    .member-name {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    .member-sub {
+      font-size: 1.2rem;
+      color: #a0aec0;
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .profile-content h2 {
+      font-size: 1.4rem;
+      border-bottom: 2px solid #2d3748;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    .profile-content p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #4a5568;
+    }
+    /* 두 버튼을 감싸는 상자를 오른쪽 끝으로 밀고, 버튼 사이 간격을 좁힙니다 */
+.auth-group {
+  margin-left: auto; /* 💡 왼쪽 여백을 최대로 밀어서 오른쪽 끝으로 이동시킴 */
+  display: flex;
+  gap: 10px;         /* 💡 두 버튼 사이의 간격을 10px로 가깝게 설정 */
+  align-items: center;
+}
+
+
+
+
+.member-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+
+.share-icon{
+    width:28px;
+    height:28px;
+
+    cursor:pointer;
+
+    opacity:0.7;
+
+    transition:.3s;
+}
+
+
+.share-icon:hover{
+    opacity:1;
+
+    transform:scale(1.1);
+}
+
+
+
+
+    /* ==========================================================================
+   💡 마틴 TMI 섹션 레이아웃
+   ========================================================================== */
+
+/* TMI 전체 구역 (가로폭을 다 채우고 유튜브 위에 배치) */
+.profile-tmi-section {
+  width: 100% !important;
+  margin-top: 60px !important; /* 소개글과의 간격 */
+}
+
+/* TMI 구역 대제목 */
+.profile-tmi-section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  color: #2d3748;
+  border-bottom: 2px solid #2d3748;
+  padding-bottom: 8px;
+  margin-bottom: 25px;
+}
+
+/* TMI 내용이 담기는 연한 회색 박스 */
+.tmi-container {
+  background-color: #f7fafc; /* 부드러운 연회색 배경 */
+  border-left: 4px solid #2d3748; /* 왼쪽에 포인트를 주는 두꺼운 선 */
+  border-radius: 0 12px 12px 0; /* 오른쪽 모서리만 둥글게 */
+  padding: 30px;
+}
+
+/* 리스트 스타일 기본 점 제거 */
+.tmi-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* TMI 각각의 줄 설정 */
+.tmi-list li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.05rem;
+  color: #4a5568;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* 마지막 줄은 아래 여백 제거 */
+.tmi-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* 🏷️ 글 앞에 붙는 타원형 TMI 태그 디자인 */
+.tmi-tag {
+  display: inline-block;
+  background-color: #e2e8f0; /* 태그 배경색 */
+  color: #4a5568; /* 태그 글자색 */
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 3px 12px;
+  border-radius: 20px; /* 타원형 모양 만들기 */
+  margin-right: 15px; /* 태그와 글자 사이의 간격 */
+  white-space: nowrap; /* 태그 안에서 줄바꿈 금지 */
+}
+
+
+    /* ==========================================================================
+   📺 유튜브 링크형 카드 그리드 레이아웃
+   ========================================================================== */
+
+    .profile-youtube-section {
+      width: 100% !important;
+      margin-top: 5px !important;
+    }
+
+    .profile-youtube-section h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.4rem;
+      color: #2d3748;
+      border-bottom: 2px solid #2d3748;
+      padding-bottom: 8px;
+      margin-bottom: 30px;
+    }
+
+    /* 3개씩 가로 정렬 */
+    .youtube-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 25px !important;
+    }
+
+    /* 카드 링크 자체 */
+    .video-card-link {
+      text-decoration: none;
+      display: block;
+    }
+
+    /* 16:9 비율 유지 및 썸네일 박스 */
+    .video-card-thumb {
+      position: relative !important;
+      width: 100% !important;
+      padding-top: 56.25% !important; /* 16:9 비율 */
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    /* 실제 썸네일 이미지 */
+    .video-card-thumb img {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important; /* 이미지 꽉 차게 */
+      transition: transform 0.3s ease;
+    }
+
+    /* 마우스 올렸을 때 검은 필터와 재생 버튼 띄우기 */
+    .play-button-overlay {
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4); /* 어두운 투명막 */
+      color: #ffffff;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; /* 평소엔 숨김 */
+      transition: opacity 0.3s ease;
+    }
+
+    /* 🔥 마우스 호버 효과: 이미지는 커지고 버튼은 나타남 */
+    .video-card-link:hover .video-card-thumb {
+      transform: translateY(-5px); /* 카드가 살짝 위로 뜸 */
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-card-link:hover .video-card-thumb img {
+      transform: scale(1.05); /* 이미지 확대 */
+    }
+
+    .video-card-link:hover .play-button-overlay {
+      opacity: 1; /* 플레이 버튼 등장 */
+    }
+
+    @media (max-width: 768px) {
+      .youtube-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+      }
+    }
+  </style>
+  <body>
+    <header class="top-white-banner">
+      <div class="logo">
+        <a href="main.html">
+          <img src="images/logo.png" alt="로고" />
+        </a>
+      </div>
+
+      <nav class="banner-center-text">
+        <div class="banner-buttons">
+          <div class="dropdown">
+            <button class="banner-btn dropdown-toggle">Members</button>
+
+            <div class="mega-menu">
+              <div class="mega-menu-inner">
+                <a href="member1.html">MARTIN</a>
+                <a href="member2.html">JAMES</a>
+                <a href="member3.html">JUHOON</a>
+                <a href="member4.html">SEONGHYEON</a>
+                <a href="member5.html">KEONHO</a>
+              </div>
+            </div>
+          </div>
+<a href="pictures.html" style="text-decoration: none; color: inherit">
+            <button class="banner-btn">Pictures</button>
+          </a>
+
+         <div class="banner-search-box">
+            <input
+              type="text"
+              class="banner-search-input"
+              id="searchInput"
+              placeholder="research..."
+            />
+
+            <div class="search-result" id="searchResult"></div>
+         </div>
+
+        </div>
+        <div class="auth-group">
+  <button class="banner-btn btn-right">Login</button>
+  <button class="banner-btn btn-right">My page</button>
+</div>
+      </nav>
+    </header>
+    <main class="profile-container">
+      <div class="profile-image-box">
+        <img
+          src="martin/MARTIN.png"
+          alt="MARTIN 프로필 사진"
+          class="profile-img"
+        />
+      </div>
+
+      <div class="profile-text-box">
+       <div class="profile-header">
+
+    <div class="member-title">
+
+        <h1 class="member-name">MARTIN</h1>
+
+        <img src="images/share.png"
+             class="share-icon"
+             onclick="copyLink()">
+
+    </div>
+
+    <p class="member-sub">Leader</p>
+
+</div>
+
+        <div class="profile-content">
+          <h2>ABOUT</h2>
+          <p>
+            <b>포지션</b>-CORTIS의 리더<br />
+            <b>출생</b>-2008년 3월 20일/서울특별시 송파구 송파동<br />
+            <b>국적</b>-대한민국과 캐나다 복수국적<br />
+            <b>신체</b>-190cm O형<br />
+            <b>가족</b>-부모님과 누나<br />
+            <b>MBTI</b>-INFP<br />
+            <b>별명</b>-그루트, 마똥틴, 틴, 토마틴<br />
+          </p>
+        </div>
+      </div>
+      </div>
+      </div> <section class="profile-tmi-section">
+        <h2>MARTIN'S TMI</h2>
+        <div class="tmi-container">
+          <ul class="tmi-list">
+             <li><span class="tmi-tag">입사</span>초등학교 5학년 때 오디션을 보고 6년동안 연습생 생활을 했다.</li>
+            <li><span class="tmi-tag">프로듀싱</span>HYBE LABELS 소속 가수들의 곡 프로듀싱에 참여했다.<br />(TXT-Deja Vu, ILLIT-Magnetic...)</li>
+            <li><span class="tmi-tag">성격</span>굉장히 순하고 착하다. 그렇지만 활발하고 밝다.</li>
+            <li><span class="tmi-tag">취향</span>아사이볼과 말차를 좋아한다. 여름과 주황색을 좋아한다.</li>
+            <li><span class="tmi-tag">특기</span>한국어와 영어를 할 수 있다. 작곡을 잘한다.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section class="profile-youtube-section">
+        <h2>FEATURED VIDEOS</h2>
+        <div class="youtube-grid">
+          <a
+            href="https://youtu.be/1neJU-a_0xk?si=r8pmcDBueU9PWw4a"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="martin/martin1.png" alt="Video 1" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+
+          <a
+            href="https://youtu.be/9OTVaXTcW28?si=lG8skFJU_jKcfs_j"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="martin/martin2.png" alt="Video 2" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+
+          <a
+            href="https://youtu.be/tWOItSAfA4M?si=G9hxvCqwVdQE40Ky"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="martin/martin3.png" alt="Video 3" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+  
+  <footer>
+    <!-- 위쪽 -->
+    <div class="footer-content">
+      <img
+        src="images/CORTIS.png"
+        alt="CORTIS footer logo"
+        class="footer-logo"
+      />
+
+      <div class="footer-info">
+        <b class="contact-title">CONTACT US</b>
+
+        <p class="contact">
+          공지사항<br />
+          LOCATION <br />
+          CONTACT<br />
+          비즈니스 문의 <br />
+          비윤리행위 신고<br />
+          하도급거래 <br />
+          가이드라인 <br />
+          영상정보처리기기 <br />
+          운영방침
+        </p>
+      </div>
+    </div>
+
+    <!-- 아래 중앙 -->
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a
+          href="https://www.instagram.com/cortis?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/instagram.png" class="social-icon" />
+        </a>
+
+        <a href="https://www.youtube.com/@cortis_bighit" target="_blank">
+          <img src="images/youtube.png" class="social-icon" />
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@cortis_bighit?is_from_webapp=1&sender_device=pc"
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/tictok.png" class="social-icon" />
+        </a>
+      </div>
+
+      <p class="footer-text">
+        <b>CORTIS | BIGHIT MUSIC</b>
+      </p>
+    </div>
+  </footer>
+</html>

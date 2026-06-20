@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <title>JAMES</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+
+  <body>
+    <header class="top-white-banner">
+      <div class="logo">
+        <a href="main.html">
+          <img src="images/logo.png" alt="로고" />
+        </a>
+      </div>
+
+      <nav class="banner-center-text">
+        <div class="banner-buttons">
+          <div class="dropdown">
+            <button class="banner-btn dropdown-toggle">Members</button>
+
+            <div class="mega-menu">
+              <div class="mega-menu-inner">
+                <a href="member1.html">MARTIN</a>
+                <a href="member2.html">JAMES</a>
+                <a href="member3.html">JUHOON</a>
+                <a href="member4.html">SEONGHYEON</a>
+                <a href="member5.html">KEONHO</a>
+              </div>
+            </div>
+          </div>
+<a href="pictures.html" style="text-decoration: none; color: inherit">
+            <button class="banner-btn">Pictures</button>
+          </a>
+
+          <div class="banner-search-box">
+            <input
+              type="text"
+              class="banner-search-input"
+              id="searchInput"
+              placeholder="research..."
+            />
+
+            <div class="search-result" id="searchResult"></div>
+         </div>
+
+        </div>
+        <div class="auth-group">
+  <button class="banner-btn btn-right">Login</button>
+  <button class="banner-btn btn-right">My page</button>
+</div>
+      </nav>
+    </header>
+    <main class="profile-container">
+      <div class="profile-image-box">
+        <img
+          src="james/JAMES.png"
+          alt="JAMES 프로필 사진"
+          class="profile-img"
+        />
+      </div>
+
+ <div class="profile-text-box">
+    <div class="profile-header">
+
+        <div class="member-title">
+            <h1 class="member-name">JAMES</h1>
+
+            <img src="images/share.png"
+                 class="share-icon"
+                 onclick="copyLink()">
+        </div>
+
+        <p class="member-sub">Main Dancer</p>
+
+    </div>
+        <div class="profile-content">
+          <h2>ABOUT</h2>
+          <p>
+            <b>포지션</b>-CORTIS의 메인댄서<br />
+            <b>출생</b>-2005년 10월 14일/타이베이시<br />
+            <b>국적</b>-대만<br />
+            <b>신체</b>-176~178cm A형<br />
+            <b>가족</b>-부모님<br />
+            <b>MBTI</b>-ISTP/INTP<br />
+            <b>별명</b>-임스, 잼, 젬끼끼, 젬냥이<br />
+          </p>
+        </div>
+      
+      
+      <section class="profile-tmi-section">
+        <h2>JAMES'S TMI</h2>
+        <div class="tmi-container">
+          <ul class="tmi-list">
+           
+            <li><span class="tmi-tag">입사</span>만 14살 때 YG엔터테인먼트에서 연습생 생활 후, 2020년 후반쯤 빅히트 엔터테이먼트로 이적했다.</li>
+            <li><span class="tmi-tag">데뷔</span>Trainee A의 데뷔조였지만 무산된 후, 마틴과 함께 HYBE LABELS 소속 가수들의 곡 작사, 작곡에 참여하다가 최종 CORTIS로 데뷔하였다.</li>
+            <li><span class="tmi-tag">성격</span>한 번 마음 먹은 일은 끝까지 해내는 성격인 반면에 팬들에겐 애교가 많다.</li>
+            <li><span class="tmi-tag">취향</span>푸딩과 버블티를 좋아한다. 검은색과 베이비파우더 향을 좋아한다.</li>
+            <li><span class="tmi-tag">특기</span>아이스하키를 잘하고 영어, 중국어, 태국어, 한국어, 일본어까지 5개 국어를 한다.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section class="profile-youtube-section">
+        <h2>FEATURED VIDEOS</h2>
+        <div class="youtube-grid">
+          <a
+            href="https://youtu.be/twqghto0qZs?si=lq4-72Ai2ZiJm4gu"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="james/james1.png" alt="Video 1" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+
+          <a
+            href="https://youtu.be/T2ItPhhszPw?si=pX2_eSf1gUVfYVCm"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="james/james2.png" alt="Video 2" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+
+          <a
+            href="https://youtu.be/OJCK4OmqS3I?si=PlKlIuHxscJPQxDa"
+            target="_blank"
+            class="video-card-link"
+          >
+            <div class="video-card-thumb">
+              <img src="james/james3.png" alt="Video 3" />
+              <div class="play-button-overlay">▶</div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+  <script>
+  function copyLink(){
+
+    navigator.clipboard.writeText(window.location.href);
+
+    alert("링크가 복사되었습니다!");
+
+}
+
+</script>
+  <footer>
+    <!-- 위쪽 -->
+    <div class="footer-content">
+      <img
+        src="images/CORTIS.png"
+        alt="CORTIS footer logo"
+        class="footer-logo"
+      />
+
+      <div class="footer-info">
+        <b class="contact-title">CONTACT US</b>
+
+        <p class="contact">
+          공지사항<br />
+          LOCATION <br />
+          CONTACT<br />
+          비즈니스 문의 <br />
+          비윤리행위 신고<br />
+          하도급거래 <br />
+          가이드라인 <br />
+          영상정보처리기기 <br />
+          운영방침
+        </p>
+      </div>
+    </div>
+
+    <!-- 아래 중앙 -->
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a
+          href="https://www.instagram.com/cortis?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/instagram.png" class="social-icon" />
+        </a>
+
+        <a href="https://www.youtube.com/@cortis_bighit" target="_blank">
+          <img src="images/youtube.png" class="social-icon" />
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@cortis_bighit?is_from_webapp=1&sender_device=pc"
+          target="_blank"
+          target="_blank"
+        >
+          <img src="images/tictok.png" class="social-icon" />
+        </a>
+      </div>
+
+      <p class="footer-text">
+        <b>CORTIS | BIGHIT MUSIC</b>
+      </p>
+    </div>
+  </footer>
+</html>
