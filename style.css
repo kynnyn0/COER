@@ -916,3 +916,18 @@ html[data-theme="dark"] .mega-menu a {
 html[data-theme="dark"] .mega-menu a:hover {
   background: #4a4d52;
 }
+.profile-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.profile-image-box {
+  flex: 0 0 380px;
+}
+
+.profile-text-box {
+  flex: 1;
+  min-width: 0;
+}
