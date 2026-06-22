@@ -25,7 +25,6 @@ footer {
 
 /* 홈 화면 코르티스 소개 */
 h1 {
-  padding-top: 350px;
   font-size: 2.3em;
 }
 
@@ -325,21 +324,6 @@ footer {
   background-size: cover;
   background-position: center;
   animation: rotate 25s infinite;
-}
-
-.slider {
-  position: relative;
-}
-
-.slide {
-  position: absolute;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
 }
 
 @keyframes rotate {
