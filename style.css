@@ -6,9 +6,13 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: "Playfair Display", sans-serif;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
+  background: var(--bg);
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 
 /* 공통 섹션 및 푸터 구조 */
@@ -19,10 +23,14 @@ footer {
   margin: 0 auto;
 }
 
+/* 홈 화면 코르티스 소개 */
 h1 {
+  padding-top: 350px;
   font-size: 2.3em;
 }
 
+/* 문서 전체에서 쓰는 변수 */
+/* 다크모드랑 연결해서 씀 */
 :root {
   --bg: #fff;
   --text: #111;
@@ -30,21 +38,7 @@ h1 {
   --border: #e5e5e5;
 }
 
-html,
-body {
-  transition:
-    background 0.3s,
-    color 0.3s;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Montserrat", sans-serif;
-  transition: 0.3s;
-}
-
+/* <input>태그인 모든 것 포함(검색/닉네임/사진키워드버튼) */
 input {
   flex: 1;
   padding: 10px;
@@ -53,6 +47,7 @@ input {
   color: var(--text);
 }
 
+/* 모든 버튼에 기본 버튼 템플릿 */
 button {
   padding: 10px;
   border: 1px solid var(--border);
@@ -64,22 +59,30 @@ button {
 /* ==========================================================================
    2. [공통] 상단 GNB 배너 & 로고 & 메가메뉴 & 검색창
    ========================================================================== */
+
+/* 상단에 흰 박스 */
 .top-white-banner {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 70px;
-  background-color: #fff;
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
   display: flex;
+  justify-content: space-between;
   align-items: center;
+
   padding: 0 40px;
   box-sizing: border-box;
+
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
   z-index: 9999;
 }
 
+/* 로고 제외하고 상단에 있는 모든 것(멤버스부터 마이페이지) */
 .banner-center-text {
   flex: 1;
   display: flex;
@@ -87,6 +90,7 @@ button {
   margin-left: 40px;
 }
 
+/* 멤버스부터 검색버튼까지 */
 .banner-buttons {
   width: 100%;
   display: flex;
@@ -94,6 +98,7 @@ button {
   gap: 30px;
 }
 
+/* 배너 버튼 모두 */
 .banner-btn {
   background: transparent;
   border: none;
@@ -104,13 +109,13 @@ button {
   white-space: nowrap;
   transition: 0.2s;
 }
-
 .banner-btn:hover {
   color: #000;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
+/* 로그인과 마이페이지 */
 .auth-group {
   margin-left: auto;
   display: flex;
@@ -118,31 +123,20 @@ button {
   align-items: center;
 }
 
+/* 로고 */
 .logo {
   height: 100px;
   display: flex;
   align-items: center;
 }
-
 .logo a {
   display: inline-block;
   height: 100%;
 }
-
 .logo img {
   height: 100%;
   width: auto;
   object-fit: contain;
-}
-
-/* 상단 배너 중복 정의 유지 */
-.top-white-banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
 }
 
 /* 드롭다운 및 메가메뉴 (Members 메뉴) */
@@ -150,7 +144,7 @@ button {
   display: inline-block;
   position: static;
 }
-
+/* 호버 후 멤버들 */
 .mega-menu {
   display: none;
   position: absolute;
@@ -166,6 +160,8 @@ button {
   z-index: 99990;
 }
 
+/* html에 없는 요소를 만들어줌 */
+/* 메가 메뉴 위에 보이지 않는 30px 박스를 만듦 */
 .mega-menu::before {
   content: "";
   position: absolute;
@@ -176,10 +172,12 @@ button {
   background: transparent;
 }
 
+/* 마우스 올리면 메뉴를 보여줌 */
 .dropdown:hover .mega-menu {
   display: block;
 }
 
+/* 메가 메뉴 안쪽을 꾸밈 */
 .mega-menu-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -190,6 +188,7 @@ button {
   gap: 50px;
 }
 
+/* 메가 메뉴 안에 a태그만 꾸밈 */
 .mega-menu-inner a {
   color: #565656;
   text-decoration: none;
@@ -200,15 +199,10 @@ button {
   transition: all 0.2s ease;
   text-align: center;
 }
-
+/* 호버 후 */
 .mega-menu-inner a:hover {
   background-color: #f7fafc;
   color: #1a202c;
-}
-
-.mega-menu {
-  background: white;
-  border: 1px solid #ddd;
 }
 
 /* 검색창 (Search Box) 구역 */
@@ -217,6 +211,7 @@ button {
   position: relative;
 }
 
+/* 검색창 안 */
 .banner-search-input {
   width: 100%;
   padding: 8px 16px;
@@ -228,11 +223,13 @@ button {
   transition: 0.2s;
 }
 
+/* 검색창을 클릭 했을 때 적용 */
 .banner-search-input:focus {
   border-color: #b5bec9;
   box-shadow: 0 0 0 3px rgba(219, 227, 237, 0.2);
 }
 
+/* 검색 결과를 담는 박스 */
 .search-result {
   display: none;
   position: absolute;
@@ -246,12 +243,13 @@ button {
   z-index: 99999;
 }
 
+/* 검색 결과 하나하나 */
 .result-item {
   padding: 15px;
   cursor: pointer;
   transition: 0.3s;
 }
-
+/* 호버 후 */
 .result-item:hover {
   background: #f5f5f5;
 }
@@ -327,6 +325,21 @@ footer {
   background-size: cover;
   background-position: center;
   animation: rotate 25s infinite;
+}
+
+.slider {
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
 }
 
 @keyframes rotate {
