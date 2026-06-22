@@ -326,6 +326,7 @@ footer {
   animation: rotate 25s infinite;
 }
 
+/* 움직이는 이미지 */
 @keyframes rotate {
   0% {
     background-image: url("images/photo1.png");
@@ -344,12 +345,14 @@ footer {
   }
 }
 
+/* 코르티스 소개 글 */
 .introduce {
   font-family: Playfair Display;
   font-size: 1.3em;
   line-height: 4em;
 }
 
+/* 마이페이지 웰컴 */
 .welcome-wrap {
   text-align: center;
   margin-top: 180px;
@@ -368,6 +371,7 @@ footer {
   margin-top: 10px;
 }
 
+/* 마이 페이지 닉네임 입력, 저장 */
 .control-box {
   max-width: 600px;
   margin: 0 auto 50px;
@@ -382,6 +386,7 @@ footer {
   margin-bottom: 10px;
 }
 
+/* 다크모드 버튼 */
 .dark-btn {
   width: 180px;
   padding: 12px;
@@ -405,6 +410,7 @@ footer {
    5. [member1~5.html] 개별 멤버 소개 페이지 전용 스타일
    ========================================================================== */
 /* 프로필 컨테이너 레이아웃 및 본문 상세 스타일 */
+/* 프로필 사진부터 추천영상까지 */
 .profile-container {
   max-width: 1000px;
   margin: 150px auto 80px auto !important;
@@ -413,12 +419,13 @@ footer {
   flex-direction: row;
   align-items: flex-start;
   gap: 60px;
-  flex-wrap: wrap !important;
+  flex-wrap: wrap;
 }
 
 .profile-image-box {
   flex: 1;
   max-width: 400px;
+  flex: 0 0 380px;
 }
 
 .profile-img {
@@ -432,6 +439,8 @@ footer {
   flex: 1.2;
   font-family: "Montserrat", "Open Sans", sans-serif;
   color: #2d3748;
+  flex: 1;
+  min-width: 0;
 }
 
 .member-name {
@@ -479,23 +488,6 @@ footer {
 .share-icon:hover {
   opacity: 1;
   transform: scale(1.1);
-}
-
-/* 멤버 레이아웃 중복 서정 정의분 분리 유지 */
-.profile-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 60px;
-  flex-wrap: wrap;
-}
-
-.profile-image-box {
-  flex: 0 0 380px;
-}
-
-.profile-text-box {
-  flex: 1;
-  min-width: 0;
 }
 
 /* 마틴 및 개별 멤버 TMI 섹션 구역 */
@@ -705,7 +697,7 @@ footer {
 /* ==========================================================================
    6. [mypage.html] 마이페이지 전용 스타일
    ========================================================================== */
-/* 즐겨찾기 선택 그리드 및 핫핑크 활성화 보더 카드 */
+/* 최애 선택 그리드 및 핫핑크 활성화 보더 카드 */
 .fav-grid {
   display: flex;
   flex-direction: row;
@@ -773,6 +765,7 @@ input[type="radio"] {
   flex-wrap: wrap;
 }
 
+/* 카테고리 버튼 */
 .tag-label {
   background-color: #f7fafc;
   color: #4a5568;
@@ -790,6 +783,7 @@ input[type="radio"] {
   background-color: #e2e8f0;
 }
 
+/* 각 버튼이 선택 될 때 카테고리 활성화처럼 보이게 함 */
 #btn-all:checked ~ .filter-tags [for="btn-all"],
 #btn-martin:checked ~ .filter-tags [for="btn-martin"],
 #btn-james:checked ~ .filter-tags [for="btn-james"],
@@ -826,6 +820,7 @@ input[type="radio"] {
   transform: translateY(-3px);
 }
 
+/*  선택한 멤버만 보이고 나머지 안보이게 */
 #btn-martin:checked ~ .image-grid .image-item:not(.martin),
 #btn-james:checked ~ .image-grid .image-item:not(.james),
 #btn-juhoon:checked ~ .image-grid .image-item:not(.juhoon),
