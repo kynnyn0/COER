@@ -14,9 +14,12 @@ const pages = {
   건호: { name: "KEONHO 페이지로 이동", url: "member5.html" },
   keonho: { name: "KEONHO 페이지로 이동", url: "member5.html" },
 };
+// 검색하면 그 페이지로 이동함
 
 // ================= SEARCH =================
+// 검색창 요소 가져오기
 const input = document.getElementById("searchInput");
+// 검색 결과 출력 요소 가져오기
 const result = document.getElementById("searchResult");
 
 if (input) {
@@ -107,7 +110,7 @@ function applyFavorite() {
   });
 }
 
-// ================= INIT =================
+// 페이지 초기화
 function initApp() {
   applyTheme();
   applyNickname();
