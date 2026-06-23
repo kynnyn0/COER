@@ -33,9 +33,9 @@ if (input) {
       //검색 성공 했을 때 객체 안에 단어가 존재하는지 확인
       result.style.display = "block";
 
-      result.innerHTML = `                        // 검색 결과를 생성하여 html을 동적으로 만들어줌
+      result.innerHTML = `                      
         <div class="result-item"
-        onclick="location.href='${pages[keyword].url}'">    //페이지로 이동함
+        onclick="location.href='${pages[keyword].url}'">  
           ${pages[keyword].name}
         </div>
       `;
