@@ -108,6 +108,7 @@ button {
   white-space: nowrap;
   transition: 0.2s;
 }
+/* 배너 버튼 호버 후 */
 .banner-btn:hover {
   color: #000;
   text-decoration: underline;
