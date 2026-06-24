@@ -133,6 +133,7 @@ button {
   display: inline-block;
   height: 100%;
 }
+/* 로고 이미지 */
 .logo img {
   height: 100%;
   width: auto;
