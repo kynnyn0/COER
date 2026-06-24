@@ -5,3 +5,5 @@
 
 사이트 바로가기
 -> https://kynnyn0.github.io/COER/
+
+-최애 고르기 기능
