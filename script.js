@@ -73,7 +73,7 @@ function toggleTheme() {
   const cur = localStorage.getItem("theme") || "light";
   const next = cur === "dark" ? "light" : "dark";
 
-  localStorage.setItem("theme", next); //저장함
+  localStorage.setItem("theme", next);
   document.documentElement.dataset.theme = next;
 
   const btn = document.getElementById("darkModeBtn");
