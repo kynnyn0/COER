@@ -250,7 +250,6 @@ button {
   cursor: pointer;
   transition: 0.3s;
 }
-/* 호버 후 */
 .result-item:hover {
   background: #f5f5f5;
 }
