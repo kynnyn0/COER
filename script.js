@@ -67,7 +67,7 @@ function applyTheme() {
   }
 }
 
-//다크모드와 라이트 모드 전환
+//다크모드와 라이트 모드 전환하는 역할
 function toggleTheme() {
   //버튼을 눌렀을 때 바로 변경
   const cur = localStorage.getItem("theme") || "light";
