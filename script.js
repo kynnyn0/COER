@@ -69,7 +69,7 @@ function applyTheme() {
 
 //다크모드와 라이트 모드 전환하는 역할
 function toggleTheme() {
-  //버튼을 눌렀을 때 바로 변경
+  //버튼을 눌렀을 때 바로 변경함
   const cur = localStorage.getItem("theme") || "light";
   const next = cur === "dark" ? "light" : "dark";
 
