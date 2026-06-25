@@ -102,6 +102,7 @@ function applyNickname() {
   }
 }
 
+// ================= FAVORITE =================
 //호출하여 저장함
 function selectFav(name) {
   localStorage.setItem("favorite", name);
